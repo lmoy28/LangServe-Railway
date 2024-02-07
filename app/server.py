@@ -111,16 +111,16 @@ class ConfigurableRetriever(RunnableSerializable[str, List[Document]]):
 configurable_collection_name = ConfigurableRetriever(
     collection_name="index1"
 ).configurable_fields(
-        ConfigurableFieldSingleOption(
-            id="collection_name",
-            name="Collection Name",
-            description="The name of the collection to use for the retriever.",
-            options={
-                "Index 1": "index1",
-                "Index 2": "index2",
-            },
-            default="Index 1",
-        )
+    collection_name=ConfigurableFieldSingleOption(
+        id="collection_name",
+        name="Collection Name",
+        description="The name of the collection to use for the retriever.",
+        options={
+            "Index 1": "index1",
+            "Index 2": "index2",
+        },
+        default="Index 1",
+    )
 )
 
 
