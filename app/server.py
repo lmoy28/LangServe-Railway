@@ -118,6 +118,7 @@ configurable_collection_name = ConfigurableRetriever(
         options={
             "Index 1": "index1",
             "Index 2": "index2",
+            "gros prout" : "sur jp"
         },
         default="Index 1",
     )
