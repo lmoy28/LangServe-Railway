@@ -37,7 +37,7 @@ app = FastAPI(
 def health_check():
     return {"status": "healthy"}
 
-@app.get("/")
+@app.get("/jp")
 def root():
     return {"JP": "is a squirrel", "status": "casse noisette"}
 
@@ -126,7 +126,6 @@ configurable_collection_name = ConfigurableRetriever(
 
 class Request(BaseModel):
     __root__: str = Field(default="cat", description="Search query")
-
 
 add_routes(app, configurable_collection_name.with_types(input_type=Request))
 
