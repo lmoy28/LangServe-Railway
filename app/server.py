@@ -18,6 +18,7 @@ from langchain.vectorstores import FAISS, VectorStore
 from langserve import add_routes
 from langserve.pydantic_v1 import BaseModel, Field
 
+
 vectorstore1 = FAISS.from_texts(
     ["cats like fish", "dogs like sticks"], embedding=OpenAIEmbeddings()
 )
@@ -30,6 +31,10 @@ app = FastAPI(
     version="1.0",
     description="Spin up a simple api server using Langchain's Runnable interfaces",
 )
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
 
 
 class UnderlyingVectorStore(VectorStore):
