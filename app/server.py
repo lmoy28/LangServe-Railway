@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """A more complex example that shows how to configure index name at run time."""
 from typing import Any, Iterable, List, Optional, Type
-
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.schema import Document
@@ -18,6 +18,7 @@ from langchain.vectorstores import FAISS, VectorStore
 from langserve import add_routes
 from langserve.pydantic_v1 import BaseModel, Field
 
+load_dotenv()
 
 vectorstore1 = FAISS.from_texts(
     ["cats like fish", "dogs like sticks"], embedding=OpenAIEmbeddings()
@@ -35,6 +36,10 @@ app = FastAPI(
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+@app.get("/")
+def health_check():
+    return {"JP": "is a squirrel", "status": "casse noisette"}
 
 
 class UnderlyingVectorStore(VectorStore):
