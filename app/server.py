@@ -38,7 +38,7 @@ def health_check():
     return {"status": "healthy"}
 
 @app.get("/")
-def health_check():
+def root():
     return {"JP": "is a squirrel", "status": "casse noisette"}
 
 

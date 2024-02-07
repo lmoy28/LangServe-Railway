@@ -2,18 +2,18 @@
 name = "langserve-railway-template"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Your Name lmoygtmga@gmail.com jp is a squirrel"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 sse-starlette = "^1.6.5"
 tomli-w = "^1.0.0"
 uvicorn = "^0.23.2"
 fastapi = "^0.104.0"
 langserve = ">=0.0.22"
 langchain-cli = "*"
-pirate-speak = { path = "packages/pirate-speak" }
+langchain==0.1.5
 python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
