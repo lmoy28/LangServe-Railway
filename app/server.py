@@ -120,7 +120,18 @@ configurable_collection_name = ConfigurableRetriever(
             "Index 2": "index2",
             "gros prout" : "sur jp"
         },
-        default="Index 1",
+        default="gros prout",
+    )
+).configurable_fields(
+    collection_name=ConfigurableFieldSingleOption(
+        id="testLucien",
+        name="Test",
+        description="usefless field",
+        options={
+            "gros prout" : "sur jp",
+            "front" : "nelson"
+        },
+        default="gros prout",
     )
 )
 
