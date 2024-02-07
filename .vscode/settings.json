@@ -2,5 +2,17 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "python.formatting.provider": "none"
+    "nuxt.isNuxtApp": false,
+    "workbench.colorCustomizations": {
+        "statusBar.background" : "#15231d",
+        "statusBar.noFolderBackground" : "#15231d",
+        "statusBar.debuggingBackground": "#15231d",
+        "statusBar.noFolderDebuggingBackground": "#15231d",
+        "statusBar.foreground": "#ffffff",
+        "statusBarItem.remoteBackground": "#15231d",
+        "statusBarItem.remoteForeground": "#ffffff",
+        "activityBar.background": "#15231d",
+        "activityBar.foreground": "#ffffff",
+        "activityBarBadge.background": "#426f5c",
+    }
 }
