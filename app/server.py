@@ -13,16 +13,33 @@ from langchain.schema.runnable import (
     RunnableSerializable,
 )
 from langchain.schema.vectorstore import VST
-from langchain.vectorstores import FAISS, VectorStore
+from langchain.vectorstores import FAISS, VectorStore, Pinecone
+from pinecone import Pinecone as PineconeClient
 
 from langserve import add_routes
 from langserve.pydantic_v1 import BaseModel, Field
 
 load_dotenv()
 
-vectorstore1 = FAISS.from_texts(
-    ["cats like fish", "dogs like sticks"], embedding=OpenAIEmbeddings()
-)
+# Define your embeddings
+# You need to make sure OpenAIEmbeddings and Pinecone classes are imported or defined in your code
+embeddings = OpenAIEmbeddings(openai_api_key='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')
+
+index_name = 'talkwithpdfnew'
+
+namespace_upsert = '6'  
+Document_ID = '474'
+filter_criteria = {'reference': Document_ID}
+
+#--------------------------------------------------------------------------------------------------------------
+#              SIMILARITY SEARCH PINECONE
+#--------------------------------------------------------------------------------------------------------------
+pc=PineconeClient(api_key='8ae669e8-205b-46c5-8e99-344d952de6f4')
+
+pinecone_index_obj= pc.Index(index_name)
+
+# Create the Pinecone instance
+vectorstore1 = Pinecone(index=pinecone_index_obj, embedding=embeddings, text_key='text', namespace=namespace_upsert)
 
 vectorstore2 = FAISS.from_texts(["x_n+1=a * xn * (1-xn)"], embedding=OpenAIEmbeddings())
 
@@ -113,13 +130,13 @@ configurable_collection_name = ConfigurableRetriever(
 ).configurable_fields(
     collection_name=ConfigurableFieldSingleOption(
         id="collection_name",
-        name="Collection Name",
+        name="Retrievers",
         description="The name of the collection to use for the retriever.",
         options={
-            "Index 1": "index1",
+            "Basic Retriever": "index1",
             "Index 2": "index2",
         },
-        default="Index 1",
+        default="Basic Retriever",
     )
 )
 

@@ -7,3 +7,6 @@ uvicorn>=0.23.2
 openai==1.8.0
 tiktoken==0.5.2
 faiss-cpu==1.7.4
+pinecone-client==3.0.0.dev8
+pinecone-client[grpc]==3.0.0.dev8
+langsmith==0.0.83
