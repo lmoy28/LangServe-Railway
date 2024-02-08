@@ -15,7 +15,7 @@ from langchain.schema.runnable import (
 from langchain.schema.vectorstore import VST
 from langchain.vectorstores import FAISS, VectorStore, Pinecone
 from pinecone import Pinecone as PineconeClient
-
+import os
 from langserve import add_routes
 from langserve.pydantic_v1 import BaseModel, Field
 
@@ -23,7 +23,7 @@ load_dotenv()
 
 # Define your embeddings
 # You need to make sure OpenAIEmbeddings and Pinecone classes are imported or defined in your code
-embeddings = OpenAIEmbeddings(openai_api_key='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')
+embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
 
 index_name = 'talkwithpdfnew'
 
@@ -31,9 +31,6 @@ namespace_upsert = '6'
 Document_ID = '474'
 filter_criteria = {'reference': Document_ID}
 
-#--------------------------------------------------------------------------------------------------------------
-#              SIMILARITY SEARCH PINECONE
-#--------------------------------------------------------------------------------------------------------------
 pc=PineconeClient(api_key='8ae669e8-205b-46c5-8e99-344d952de6f4')
 
 pinecone_index_obj= pc.Index(index_name)
